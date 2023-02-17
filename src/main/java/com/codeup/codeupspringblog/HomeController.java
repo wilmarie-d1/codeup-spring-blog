@@ -11,7 +11,11 @@ public class HomeController {
 @GetMapping(path = "/")
     @ResponseBody
     public String Hello() {
-    return "This is crazy..";
+    return "Hey I just met you" +
+            "This is crazy.." +
+            "But here's my number" +
+            "So call me maybe"
+            ;
 }
 
 }
