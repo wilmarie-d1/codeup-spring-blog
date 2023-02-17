@@ -13,4 +13,19 @@ public class MathController {
     public String add(@PathVariable int number1, @PathVariable int number2){
         return number1 + " + " + number2 + " = " + (number1 + number2);
     }
+    @GetMapping(path = "/subtract/{number1}/and/{number2}")
+    @ResponseBody
+    public String subtract(@PathVariable int number1, @PathVariable int number2){
+        return number1 + " - " + number2 + " = " + (number1 - number2);
+    }
+    @GetMapping(path = "/multiply/{number1}/and/{number2}")
+    @ResponseBody
+    public String multiple(@PathVariable int number1, @PathVariable int number2){
+        return number1 + "* " + number2 + " = " + (number1 * number2);
+    }
+    @GetMapping(path = "/divide/{number1}/and/{number2}")
+    @ResponseBody
+    public String divide(@PathVariable int number1, @PathVariable int number2){
+        return number1 + " / " + number2 + " = " + (number1 / number2);
+    }
 }
