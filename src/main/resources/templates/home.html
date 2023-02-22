@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Casa</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="Partials/partials :: head" />
 <body>
-<h1>This is the home page</h1>
-
+<nav th:replace="Partials/partials :: navbar" />
+<h1>Welcome To My Site!</h1>
+<footer th:replace="Partials/partials :: footer" />
 </body>
 </html>
