@@ -11,20 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 public class HomeController {
-@GetMapping(path = "/home")
-    @ResponseBody
-    public String Hello() {
-    return "home";
-}
-    @GetMapping("/join")
-    public String showJoinForm() {
-        return "join";
-    }
 
-    @PostMapping("/join")
-    public String joinCohort(@RequestParam(name = "cohort") String cohort, Model model) {
-        model.addAttribute("cohort", "Welcome to " + cohort + "!");
-        return "join";
+    @GetMapping("/home")
+    public String home(){
+        return "home";
     }
 
 }
