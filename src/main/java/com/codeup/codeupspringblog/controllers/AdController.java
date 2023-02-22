@@ -6,10 +6,7 @@ import com.codeup.codeupspringblog.repositories.AdRepository;
 import org.apache.catalina.LifecycleState;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,16 +53,26 @@ public class AdController {
     }
 
     @GetMapping("/ads/create")
-    public String adCreateForm(){
+    public String adCreateForm(Model model){
+        model.addAttribute("newAd", new Ad());
         return "ads/create";
     }
 
     @PostMapping(path = "/ads/create")
-    public String adCreateSubmit(@RequestParam String title, @RequestParam String description){
-        Ad newAd = new Ad(1, title, description);
+    public String adCreateSubmit(@ModelAttribute Ad ad){
+        adDao.save(ad);
+        return "redirect:/ads";
+    }
 
-        adDao.save(newAd);
+    @GetMapping("/ads/{id}/edit")
+    public String showEditForm(@PathVariable long id, Model model) {
+        model.addAttribute("ad", adDao.findById(id).get());
+        return "ads/edit";
+    }
 
+    @PostMapping("/ads/{id}/edit")
+    public String editAd(@PathVariable long id, @ModelAttribute Ad ad) {
+        adDao.save(ad);
         return "redirect:/ads";
     }
 
