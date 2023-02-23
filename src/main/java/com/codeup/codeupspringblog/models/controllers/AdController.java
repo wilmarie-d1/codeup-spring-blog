@@ -1,4 +1,4 @@
-package com.codeup.codeupspringblog.controllers;
+package com.codeup.codeupspringblog.models.controllers;
 
 import com.codeup.codeupspringblog.models.Ad;
 import com.codeup.codeupspringblog.models.AdImage;
@@ -28,7 +28,7 @@ public class AdController {
     @GetMapping("/ads/by/{title}")
     public String adShow(@PathVariable String title, Model model) {
         model.addAttribute("title", adDao.findByTitle(title));
-        return"ads/adsShow";
+        return"ads/adShow";
     }
 
 

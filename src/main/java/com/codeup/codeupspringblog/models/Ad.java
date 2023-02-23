@@ -28,6 +28,11 @@ public class Ad {
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
     private List<AdCategory> categories;
+    @ManyToOne
+    private User owner;
+
+
+
     public Ad(){}
 
     public Ad(long id, String title, String description){
@@ -35,7 +40,6 @@ public class Ad {
         this.title = title;
         this.description = description;
     }
-
     public List<AdImage> getImages() {
         return images;
     }
@@ -66,5 +70,17 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getUser() {
+        return owner;
     }
 }
