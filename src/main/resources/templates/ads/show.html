@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Show</title>
+    <meta charset="UTF-8"/>
+    <title>Individual Post</title>
+    <th:block th:include="partials/partials.html :: styles"></th:block>
 </head>
 <body>
+<nav th:replace="partials/partials.html :: navbar"></nav>
 <div class="container">
-  <div class="row">
-    <div class="col">
-        <img th:each="image : ${ad.images}" th:src="@{${image.imageURL}}" />
-      <h1 th:text="${ad.title}"></h1>
-      <h1 th:text="${ad.description}"></h1>
+    <div class="row">
+        <div class="col">
+            <img th:each="image : ${ad.images}" th:src="@{${image.imageURL}}">
+            <h1 th:text="${ad.title}"></h1>
+            <p th:text="${ad.description}"></p>
+            <th:block sec:authorize="isAuthenticated()">
+                <a th:href="@{/ads/{id}/edit (id = ${ad.id})}">Edit</a>
+                <form th:action="@{/ads/{id}/delete (id = ${ad.id})}" th:method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </th:block>
+        </div>
     </div>
-  </div>
 </div>
-
 </body>
 </html>

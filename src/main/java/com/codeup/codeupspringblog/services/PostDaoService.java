@@ -1,7 +1,10 @@
 
 
-package com.codeup.iconspringblog.services;
+package com.codeup.codeupspringblog.services;
 
+import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.repositories.PostRepository;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.iconspringblog.models.Post;
 import com.codeup.iconspringblog.repositories.PostRepository;
 import com.codeup.iconspringblog.repositories.UserRepository;

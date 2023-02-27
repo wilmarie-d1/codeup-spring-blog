@@ -8,35 +8,106 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 public class AdCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(length = 100)
-    private String name;
-    @ManyToMany(mappedBy = "categories")
-    private List<Ad> ads;
 
-    public AdCategory(String name, List<Ad> ads) {
-        this.name = name;
-        this.ads = ads;
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false)
+    private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ad")
+    private List<AdImage> images;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "ads_categories",
+            joinColumns = {@JoinColumn(name = "ad_id")},
+            inverseJoinColumns = {@JoinColumn(name = "category_id")}
+    )
+    private List<AdCategory> categories;
+    @ManyToOne
+    private User owner;
+
+    public Ad() {}
+
+
+    public Ad(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
-    public AdCategory(){}
 
-
-    public String getName() {
-        return name;
+    public Ad(long id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Ad(String title, String description, User owner) {
+        this.title = title;
+        this.description = description;
+        this.owner = owner;
     }
 
-    public List<Ad> getAds() {
-        return ads;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setAds(List<Ad> ads) {
-        this.ads = ads;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
+    public List<AdImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<AdImage> images) {
+        this.images = images;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<AdCategory> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<AdCategory> categories) {
+        this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", images=" + images +
+                ", categories=" + categories +
+                '}';
+    }
 }

@@ -9,11 +9,13 @@ Technologies involved:
     -Maven
     -Spring JPA Data
     -Spring Web
+    -Spring Security
 -CSS
 -Bootstrap 5
 -Java 17
 -MySQL
 -IntelliJ
 -JavaScript
+-SendGrid API
 
 In order to configure MySQL Database credentials, please refer to the `example.properties` file for necessary for information.

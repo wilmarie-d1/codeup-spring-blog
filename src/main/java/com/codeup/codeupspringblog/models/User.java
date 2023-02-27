@@ -7,10 +7,9 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
-
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(nullable = false, length = 50, unique = true)
     private String username;
     @Column(nullable = false)
@@ -22,12 +21,28 @@ private long id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private List<Ad> ads;
+
     public User() {};
+
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public List<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ad> ads) {
+        this.ads = ads;
     }
 
     public long getId() {

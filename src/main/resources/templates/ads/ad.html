@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ads addy ad</title>
+    <title>Ads</title>
+    <th:block th:include="partials/partials.html :: styles"></th:block>
 </head>
 <body>
-<h1> Howdy, here are some ads:</h1>
+<nav th:replace="partials/partials.html :: navbar"></nav>
+<h1>Here are all the ads: </h1>
 <div th:each="ad : ${ads}">
-<img th:each="image : ${ad.images}" th:src="@{${image.imageURL}}" />
-<h1 th:text="${ad.title}"></h1>
-<h1 th:text="${ad.description}"></h1>
+    <img th:each="image : ${ad.getImages()}" th:src="@{${image.imageURL}}" alt="ad image" />
+    <h1><a th:href="@{/ads/{id} (id = ${ad.id})}" th:text="${ad.title}"></a></h1>
+    <p th:text="${ad.description}"></p>
 </div>
-
 </body>
 </html>
