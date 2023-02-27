@@ -3,8 +3,11 @@ package com.codeup.codeupspringblog.services;
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserDaoService {
+
 
 
     private final UserRepository userRepository;
@@ -22,7 +25,6 @@ public class UserDaoService {
         user.setPassword(hash);
         // save the user with the hashed password field
         userRepository.save(user);
-
     }
 
 }

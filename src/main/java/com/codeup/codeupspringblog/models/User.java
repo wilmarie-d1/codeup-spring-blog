@@ -6,10 +6,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class User {   @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id;
     @Column(nullable = false, length = 50, unique = true)
     private String username;
     @Column(nullable = false)
@@ -84,4 +83,5 @@ public class User {
     public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
+
 }

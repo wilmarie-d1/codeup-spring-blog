@@ -1,9 +1,7 @@
 package com.codeup.codeupspringblog.services;
 
-import com.codeup.codeupspringblog.models.Ad;
 import com.codeup.codeupspringblog.models.Post;
 import com.sendgrid.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -19,11 +19,12 @@ public class Ad {
     @Column(nullable = false)
     private String description;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "ad")
-        private List<AdImage> images;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ad")
+    private List<AdImage> images;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "ads_categories",
+    @JoinTable(
+            name = "ads_categories",
             joinColumns = {@JoinColumn(name = "ad_id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id")}
     )
@@ -31,15 +32,33 @@ public class Ad {
     @ManyToOne
     private User owner;
 
+    public Ad(){};
 
-
-    public Ad(){}
+    public Ad(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public Ad(long id, String title, String description){
         this.id = id;
         this.title = title;
         this.description = description;
     }
+
+    public Ad(String title, String description, User owner) {
+        this.title = title;
+        this.description = description;
+        this.owner = owner;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
     public List<AdImage> getImages() {
         return images;
     }
@@ -72,15 +91,22 @@ public class Ad {
         this.description = description;
     }
 
-    public User getOwner() {
-        return owner;
+    public List<AdCategory> getCategories() {
+        return categories;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setCategories(List<AdCategory> categories) {
+        this.categories = categories;
     }
 
-    public User getUser() {
-        return owner;
+    @Override
+    public String toString() {
+        return "Ad{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", images=" + images +
+                ", categories=" + categories +
+                '}';
     }
 }

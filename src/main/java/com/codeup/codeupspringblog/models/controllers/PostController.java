@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 
 
 @Controller
-public class PostController
+public class PostController{
 
         private final PostDaoService postService;
         private final EmailService emailService;
