@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PostDaoService {
-
-
-    private final PostRepository postRepository;
+public class PostDaoService { private final PostRepository postRepository;
     private final UserRepository userRepository;
 
     public PostDaoService(PostRepository postRepository, UserRepository userRepository) {

@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="partials/partials.html :: navbar"></nav>
-<h1>Here are all the ads: </h1>
+<h1>Latest ads</h1>
 <div th:each="ad : ${ads}">
     <img th:each="image : ${ad.getImages()}" th:src="@{${image.imageURL}}" alt="ad image" />
     <h1><a th:href="@{/ads/{id} (id = ${ad.id})}" th:text="${ad.title}"></a></h1>
